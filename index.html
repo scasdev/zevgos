@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zevgos - The Crypto Pair Trading Gadget</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="logo-menu">
+        <h1>Zevgos</h1>
+    </header>
+
+    <main>
+        <section>
+            <article class="item">
+            <p>Enter coin names of co-integrated pairs</p>
+            </article>
+        </section>
+        <section class="group coin-inputs">
+            <form id="js-form">
+                    <label for="coin-a"> <span> Coin A</span>
+                    <input type="text" name="coin-a" id="js-coin-a" placeholder="i.e. bitcoin" required>
+                </label>
+                    <label for="coin-b"><span> Coin B</span>
+                    <input type="text" name="coin-b" id="js-coin-b" placeholder="i.e. ethereum" required>
+                </label>
+
+                <button type="submit" id="js-form" class="btn">Generate Pair Data</button>
+
+            </form>
+        </article>
+        </section>
+
+        <section class="group wrapper">
+        </section>
+
+        <p id="js-error-message" class="error-message"></p>
+        <section class="group wrapper hidden">
+            <article class="item">
+                <p>The Ratio, Coin A / Coin B in USD</p>
+                <h2 class="results" id="js-ratio">R</h2>                
+            </article>
+            <article class="item">
+                <p>The Formula, Coin A / Coin B * The Ratio in USD</p>
+                <h2 class="results" id="js-formula">Coin A - Coin B * R</h2>
+            </article>
+        </section>
+
+        <section class="group wrapper hidden">
+            <article class="item">
+                <p>The spread/pair number (divergence/convergence) in USD</p>
+                <h2 class="results" id="js-spread">Spread</h2>
+            </article>
+        </section>
+
+        <section class ="js-coin-market-data">
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
