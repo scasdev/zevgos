@@ -1,3 +1,45 @@
+body {
+  font-family: 'Roboto', serif;
+  background-color:#33332C;
+  color:#CCC;
+}
+
+header {
+  text-align:center;
+  margin: 40px 0 40px;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: lighter;
+  color: #666;
+  margin-top: -5px;
+  margin-bottom: 50px;
+}
+
+h2, h4, span {
+  font-family: 'Montserrat', serif;
+  font-weight: bold;
+  color:#CEDD47;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+h4 {
+  color: #CEDD47;
+  font-size:14px;
+}
+
+.dark {
+  background-color:#232016;
+  border-radius: 10px;
+  margin: 0 auto 0 auto;
+  padding: 20px;
+}
+
 label { 
     width: 100px; 
     float: left; 
@@ -13,19 +55,24 @@ span {
 
 input { 
     width: 100px; 
-    border: 1px solid #000; 
-    padding: 5px; }
+    padding: 5px;
+    border-radius: 30px; 
+    border: none;
+    background-color: #CCC;
+  }
 
 button {
     border-radius: 5px;
-    padding: 5px 15px;
-    font-size: 15px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: 'Montserrat', serif;
+    font-weight: bold;
     text-decoration: none;
-    color: #000;
+    color: #525E14;
     position: relative;
     display: inline-block;
-    background-color: #ccc;
-    box-shadow: 0px 5px 0px 0px #ddd;
+    background-color: #CEDD47;
+    box-shadow: 0px 5px 0px 0px #818E2B;
     border:none;
     margin: 20px auto 0 auto;
   }
@@ -43,7 +90,7 @@ button {
   }
 /* Groups & Items  (Mobile First) */
 .coin-inputs {
-    width: 240px;
+    width: 360px;
     text-align: center;
     margin: 0 auto 30px auto;
 }
@@ -68,10 +115,20 @@ button {
     margin: 10px;
   }
 
+  .group {
+    flex-direction: row;
+  }
+
  
   
   /* Groups & Items  (Desktop) */
   
+  @media (min-width: 0px) and (max-width: 600px) {
+    .group {
+      flex-direction: column;
+    }
+  }
+
   @media all and (max-width: 600px) {
 
     .coin-volume {
@@ -81,6 +138,7 @@ button {
     .coin-volume-title {
         display: none;
     }
+    
       
   }
 
@@ -92,6 +150,7 @@ button {
     .coin-percent-title {
         display: none;
     }
+
     }
     
 
@@ -106,6 +165,7 @@ button {
     .coin-market-cap-title {
         display: none;
     }
+
     }
 
   /* Coin Chart Data */

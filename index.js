@@ -43,7 +43,9 @@ function displayResults(responseJson, coinAinput) {
 
     // assigns visual representation of the formula to the variable
     let formulaVisual = `${coinA.symbol} - ${coinB.symbol} *` + `  ${ratioTwoDecimalPlaces}`;
+    
 
+    $("h3#js-prompt").replaceWith(`<h3> see results below </h3>`)  
     $("h2#js-ratio").append(`<h2>${ratioTwoDecimalPlaces}</h2>`);
     $("h2#js-formula").append(`<h2 class="coin-symbol-formula">${formulaVisual}</h2>`);
     $("h2#js-spread").append(`<h2> ${spreadTwoDecimalPlaces} </h2>`);
@@ -56,10 +58,10 @@ function displayResults(responseJson, coinAinput) {
     return;
 };
 
-
-function getCoins(coinA, coinB) {
+// rx the coin names entered by the user, makes an API request with fetch, and displays the response while running the display results function
+function getCoins(coinA, coinB, currency) {
     const params = {
-        vs_currency: "usd",
+        vs_currency: currency,
         ids: coinA + "," + coinB,
         order: "market_cap_desc",
         per_page: "2",
@@ -78,24 +80,28 @@ function getCoins(coinA, coinB) {
             if (responseJson[0].id == null) {              
                 throw console.log('incorrect coin name');
             } else {
-                displayResults(responseJson, coinA)        }
+                displayResults(responseJson, coinA) 
+                $('#js-prompt').empty()}
         })
-        .catch(error => alert(`can't find that pair, please try again`))
+        .catch(error => $("h3#js-prompt").replaceWith(`<h3> that didn't work, please try again </h2>`))
 }
 
+// watches the form for an input of coins from the user
 function watchForm() {
     //listen for submit 
     $('#js-form').submit(event => {
         event.preventDefault();
-        //Accept value and submit
         const coinAinput = $('#js-coin-a').val();
         const coinBinput = $('#js-coin-b').val();
+        const currency = $('#js-currency').val();
         console.log(coinAinput);
         console.log(coinBinput);
-        getCoins(coinAinput, coinBinput);
+        console.log(currency);
+        getCoins(coinAinput, coinBinput, currency);
     });
 }
 
+// generates the coin market data and displays it under the formula
 function generateCoinMarketDataHtml(coinA, coinB) {
     console.log(coinA);
     console.log(coinB);
@@ -103,14 +109,14 @@ function generateCoinMarketDataHtml(coinA, coinB) {
     <section class='coin-container'>
         <div class='coin-row'>
             <div class='coin'>
-                <h3>Coin</h3>              
+                <h4>Coin</h4>              
             </div>
             <div class='coin-market-data'>
-                <h3 class='coin-symbol-title'>Symbol</h3>
-                <h3 class='coin-price-title'>Price</h3>
-                <h3 class='coin-volume-title'>Volume</h3>
-                <h3 class='coin-percent-title'>Price Ch. %</h3>
-                <h3 class='coin-market-cap-title'>Coin Mkt. Cap</h3>
+                <h4 class='coin-symbol-title'>Symbol</h4>
+                <h4 class='coin-price-title'>Price</h4>
+                <h4 class='coin-volume-title'>Volume</h4>
+                <h4 class='coin-percent-title'>24h Price Ch. %</h4>
+                <h4 class='coin-market-cap-title'>Coin Mkt. Cap</h4>
             </div>
         </div>    
     </section>
@@ -119,7 +125,7 @@ function generateCoinMarketDataHtml(coinA, coinB) {
         <div class='coin-row'>
             <div class='coin'>
                 <img src=${coinA.image} alt='crypto' />
-                <h1>${coinA.name}</h1>              
+                <p>${coinA.name}</p>              
             </div>
             <div class='coin-market-data'>
                 <p class='coin-symbol'>${coinA.symbol.toUpperCase()}</p>
@@ -135,7 +141,7 @@ function generateCoinMarketDataHtml(coinA, coinB) {
         <div class='coin-row'>
             <div class='coin'>
                 <img src=${coinB.image} alt='crypto' />
-                <h1>${coinB.name}</h1>              
+                <p>${coinB.name}</p>              
             </div>
              <div class='coin-market-data'>
                 <p class='coin-symbol'>${coinB.symbol.toUpperCase()}</p>
