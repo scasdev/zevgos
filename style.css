@@ -82,6 +82,7 @@ button {
     -webkit-transform: translate(0px, 5px);
     box-shadow: 0px 1px 0px 0px;
     background-color: #b4b4b4;
+    color:#666;
     border:none;
   }
   

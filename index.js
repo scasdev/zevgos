@@ -30,7 +30,6 @@ function displayResults(responseJson, coinAinput) {
 
     // changes price data to an integer then executes ratio formula based CoinA / CoinB
     let ratio = Number(coinA.current_price) / Number(coinB.current_price);
-    console.log(ratio);
 
     // sets the decimal place of the ratio to the 10th
     let ratioTwoDecimalPlaces = ratio.toFixed(2);
@@ -70,7 +69,6 @@ function getCoins(coinA, coinB, currency) {
     };
     const queryString = formatQueryParams(params)
     const url = searchURL + '?' + queryString;
-    console.log(url);
 
 
 
@@ -93,17 +91,12 @@ function watchForm() {
         const coinAinput = $('#js-coin-a').val();
         const coinBinput = $('#js-coin-b').val();
         const currency = $('#js-currency').val();
-        console.log(coinAinput);
-        console.log(coinBinput);
-        console.log(currency);
         getCoins(coinAinput, coinBinput, currency);
     });
 }
 
 // generates the coin market data and displays it under the formula
 function generateCoinMarketDataHtml(coinA, coinB) {
-    console.log(coinA);
-    console.log(coinB);
     return `
     <section class='coin-container'>
         <div class='coin-row'>
@@ -154,6 +147,5 @@ function generateCoinMarketDataHtml(coinA, coinB) {
     `}
 
 $(function () {
-    console.log('App loaded! Waiting for submit!');
     watchForm();
 });
