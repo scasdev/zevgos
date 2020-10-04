@@ -80,8 +80,7 @@ function getCoins(coinA, coinB, currency) {
             if (responseJson[0].id == null) {              
                 throw console.log('incorrect coin name');
             } else {
-                displayResults(responseJson, coinA) 
-                $('#js-prompt').empty()}
+                displayResults(responseJson, coinA)}
         })
         .catch(error => $("h3#js-prompt").replaceWith(`<h3> that didn't work, please try again </h2>`))
 }
