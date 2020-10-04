@@ -29,7 +29,7 @@ h1.white {
 
 }
 
-p.gray {
+p.gray, ol.gray {
   color:#232016;
   line-height: 30px;
 }
