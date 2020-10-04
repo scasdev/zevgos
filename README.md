@@ -4,7 +4,7 @@ Zevgos is a Crypto Pair-trading Tool to help with calculating formulas necessary
 
 ## Link
 
-[Zevgos Web App](http://https://scasdev.github.io/zevgos/)
+[Zevgos Web App](https://scasdev.github.io/zevgos/)
 
 https://scasdev.github.io/zevgos/
 
