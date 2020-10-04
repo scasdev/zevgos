@@ -39,8 +39,6 @@ The formula is displayed so the user will be be able to copy and paste it into t
 
 In addition to the formulas required for the brokerage/charting software. The user will also be able to see relevant data related to the currency. Under the aforementioned data, the coin logo, name, price, volume, 24h price change percentage, and coin market capitalization will also be displayed.
 
-Please make sure to update tests as appropriate.
-
 ## Technology
 HTML
 

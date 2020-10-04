@@ -1,18 +1,61 @@
+
 body {
   font-family: 'Roboto', serif;
-  background-color:#33332C;
+  background: linear-gradient(180deg, #8EA73B 25%, #33332C 50%, #33332C 75%);
   color:#CCC;
-}
+} 
 
 header {
   text-align:center;
   margin: 40px 0 40px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+.green {
+  margin: 100px auto 200px auto;
+  width: 80%;
+  text-align: center;
+}
+
+h1.white {
+  font-family: 'Montserrat', serif;
+  font-weight: bold;
+  color: white;
+  font-size:25px;
+  line-height: 45px;
+
+}
+
+p.gray {
+  color:#232016;
+  line-height: 30px;
+}
+
+.landing-content {
+  text-align: center;
+}
+
+.landing-text {
+  text-align: left;
+  width: 70%;
+  margin: auto ;
+}
+
+.logo-landing {
+  margin-bottom: 40px;
+}
+
+.logo-menu {
+  padding-top: 80px;
+}
+
 h1 {
   font-size: 18px;
   font-weight: lighter;
-  color: #666;
+  color: rgb(122, 122, 122);
   margin-top: -5px;
   margin-bottom: 50px;
 }
@@ -233,15 +276,6 @@ button {
   .coin-market-cap {
     width: 230px;
   }
-  
-  .red {
-    color: #f00606;
-  }
-  
-  .green {
-    color: #11d811;
-  }
-
 
   .coin-symbol-title {
     margin-right:15px;
