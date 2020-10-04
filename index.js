@@ -88,9 +88,12 @@ function watchForm() {
     //listen for submit 
     $('#js-form').submit(event => {
         event.preventDefault();
-        const coinAinput = $('#js-coin-a').val();
-        const coinBinput = $('#js-coin-b').val();
-        const currency = $('#js-currency').val();
+        let coinAinput = $('#js-coin-a').val();
+        coinAinput = coinAinput.toLowerCase();
+        let coinBinput = $('#js-coin-b').val();
+        coinBinput = coinBinput.toLowerCase();
+        let currency = $('#js-currency').val();
+        currency = currency.toLowerCase();
         getCoins(coinAinput, coinBinput, currency);
     });
 }
