@@ -58,11 +58,8 @@ function displayResults(responseJson, coinAinput) {
     return;
 };
 
+//cycles through the second API request to identify the coin name for a symbol entered by the user
 function mapCoin(responseJson, coin) {
-
-    // API REQUEST WORKS
-    console.log(coin); // COIN is SYMBOL entered by USER - try zoc for example
-    console.log(responseJson[0].symbol); //first symbol in the object, = "zoc", but if I enter "zoc" in the input, it doesn't match them and print line 67 - "this works"
     for (let i = 0; i < responseJson.length; i++) {
         if (coin == responseJson[i].symbol) {
             return responseJson[i].id;
@@ -88,15 +85,16 @@ function getCoins(coinA, coinB, currency) {
     fetch(url)
         .then(responseCoinData => responseCoinData.json())
         .then(responseJsonCoinData => {            
-            //check to see if the API request works, if it doesn't work, check to see if the user entered a symbol rather than the coin name
+            // check to see if the API request works, if it doesn't work, check to see if the user entered a symbol rather than the coin name
             
             if (responseJsonCoinData.length === 0) {
-                //fetches the coin list and compares the user input to an object of symbols in order to find the correct ID
+                // fetches the coin list and compares the user input of symbols to an object of coin names(IDs)/symbols in order to find the correct ID
                 fetch(coinMappingURL)
                     .then(responseCoinList => responseCoinList.json())
                     .then(responseJsonCoinList => {
                         console.log(responseJsonCoinList[0].symbol);
 
+                        // converts the users symbol to an ID that can be used for the API request
                         let coinAid = mapCoin(responseJsonCoinList, coinA)
                         let coinBid = mapCoin(responseJsonCoinList, coinB)
 
