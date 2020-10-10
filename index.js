@@ -63,7 +63,6 @@ function mapCoin(responseJson, coin) {
     for (let i = 0; i < responseJson.length; i++) {
         if (coin == responseJson[i].symbol) {
             return responseJson[i].id;
-            // console.log('this works');
         }
     }
 }
@@ -92,7 +91,6 @@ function getCoins(coinA, coinB, currency) {
                 fetch(coinMappingURL)
                     .then(responseCoinList => responseCoinList.json())
                     .then(responseJsonCoinList => {
-                        console.log(responseJsonCoinList[0].symbol);
 
                         // converts the users symbol to an ID that can be used for the API request
                         let coinAid = mapCoin(responseJsonCoinList, coinA)
