@@ -143,6 +143,34 @@ button {
     color:#666;
     border:none;
   }
+
+
+  a {
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: 'Montserrat', serif;
+    font-weight: bold;
+    text-decoration: none;
+    color: #525E14;
+    position: relative;
+    display: inline-block;
+    background-color: #CEDD47;
+    box-shadow: 0px 5px 0px 0px #818E2B;
+    border:none;
+    margin: 20px auto 0 auto;
+  }
+
+  a:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+    background-color: #b4b4b4;
+    color:#666;
+    border:none;
+  }
+
+
   
   .coin-symbol-formula {
     text-transform: uppercase;

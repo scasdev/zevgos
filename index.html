@@ -13,8 +13,8 @@
 </head>
 
 <body>
-    <main class="green">
-        <section>
+    <main>
+        <section class="green">
             <img class="logo-landing" src="images/logo-landing.png" alt="logo">
             <article class="landing-text">                
                 <h1 class="white">Tired of running tedious pair-trading calculations? You’re in luck, Zevgos was created for crypto day traders like you.</h1>        
@@ -29,16 +29,14 @@
                 <p class="gray">Just scroll down enter your co-integrated pairs. You’ll see the "ratio", the "formula", the “spread”, and much more.
                 </p>                
             </article>
-            <a href="#app" class="btn"><button>Lets GO!</button></a>
+            <a href="#app" class="btn">Lets GO!</a>
         </section>
-    </main>
 
     <header class="logo-menu" id="app">
         <img src="images/logo.png" alt="logo">
         <h1>The Crypto Pair-trading Tool</h1>
     </header>
 
-    <main>
         <section>
             <article class="item">
             <h3 class="results" id="js-prompt">Enter two coin names, or two symbols of co-integrated pairs</h3>
@@ -46,18 +44,17 @@
         </section>
         <section class="group coin-inputs">
             <form id="js-form">
-                    <label for="coin-a"> <span> Coin A</span>
-                    <input type="text" name="coin-a" id="js-coin-a" placeholder="i.e. bitcoin" required>
+                    <label for="js-coin-a"> <span> Coin A</span>
+                    <input type="text" name="js-coin-a" id="js-coin-a" placeholder="i.e. bitcoin" required>
                 </label>
-                    <label for="coin-b"><span> Coin B</span>
-                    <input type="text" name="coin-b" id="js-coin-b" placeholder="i.e. ethereum" required>
+                    <label for="js-coin-b"><span> Coin B</span>
+                    <input type="text" name="js-coin-b" id="js-coin-b" placeholder="i.e. ethereum" required>
                 </label>
-                <label for="coin-b"><span> Currency</span>
-                    <input type="text" name="coin-b" id="js-currency" placeholder="i.e. usd or btc" required>
+                <label for="js-currency"><span> Currency</span>
+                    <input type="text" name="js-currency" id="js-currency" placeholder="i.e. usd or btc" required>
                 </label>
-                <button type="submit" id="js-form" class="btn">Generate Pair Data</button>
+                <button type="submit" class="btn">Generate Pair Data</button>
             </form>
-        </article>
         </section>
 
         <section class="group wrapper">
@@ -76,7 +73,6 @@
                 <p>The Formula, Coin A / Coin B * The Ratio</p>
                 <h2 class="results" id="js-formula">Coin A - Coin B * R</h2>
                 </div>
-            </div>
             </article>
         </section>
 

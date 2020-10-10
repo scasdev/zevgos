@@ -84,9 +84,9 @@ function getCoins(coinA, coinB, currency) {
 
     fetch(url)
         .then(responseCoinData => responseCoinData.json())
-        .then(responseJsonCoinData => {            
+        .then(responseJsonCoinData => {
             // check to see if the API request works, if it doesn't work, check to see if the user entered a symbol rather than the coin name
-            
+
             if (responseJsonCoinData.length === 0) {
                 // fetches the coin list and compares the user input of symbols to an object of coin names(IDs)/symbols in order to find the correct ID
                 fetch(coinMappingURL)
@@ -120,7 +120,7 @@ function getCoins(coinA, coinB, currency) {
                 displayResults(responseJsonCoinData, coinA)
             }
         })
-        .catch(error => $("h3#js-prompt").append(`<h5> oops, that didn't work.</h5> <br> <h3>Please enter either two coin names, OR two symbols of co-integrated pairs </h3>`))
+        .catch(error => $("h3#js-prompt").append(`<h5> oops, that didn't work.</h5> <br> <h3>Please enter two coin names, OR two symbols of co-integrated pairs </h3>`))
 
 }
 
