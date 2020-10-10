@@ -2,6 +2,7 @@
 
 //base URL for the API request  
 const searchURL = 'https://api.coingecko.com/api/v3/coins/markets';
+const coinMappingURL = 'https://api.coingecko.com/api/v3/coins/list';
 
 //function to format query parameters to complete the API request URL
 function formatQueryParams(params) {
@@ -42,9 +43,9 @@ function displayResults(responseJson, coinAinput) {
 
     // assigns visual representation of the formula to the variable
     let formulaVisual = `${coinA.symbol} - ${coinB.symbol} *` + `  ${ratioTwoDecimalPlaces}`;
-    
 
-    $("h3#js-prompt").replaceWith(`<h3> see results below </h3>`)  
+
+    $("h3#js-prompt").append(`<h3> see results below </h3>`);
     $("h2#js-ratio").append(`<h2>${ratioTwoDecimalPlaces}</h2>`);
     $("h2#js-formula").append(`<h2 class="coin-symbol-formula">${formulaVisual}</h2>`);
     $("h2#js-spread").append(`<h2> ${spreadTwoDecimalPlaces} </h2>`);
@@ -57,8 +58,22 @@ function displayResults(responseJson, coinAinput) {
     return;
 };
 
+function mapCoin(responseJson, coin) {
+
+    // API REQUEST WORKS
+    console.log(coin); // COIN is SYMBOL entered by USER - try zoc for example
+    console.log(responseJson[0].symbol); //first symbol in the object, = "zoc", but if I enter "zoc" in the input, it doesn't match them and print line 67 - "this works"
+    for (let i = 0; i < responseJson.length; i++) {
+        if (coin == responseJson[i].symbol) {
+            return responseJson[i].id;
+            // console.log('this works');
+        }
+    }
+}
+
 // rx the coin names entered by the user, makes an API request with fetch, and displays the response while running the display results function
 function getCoins(coinA, coinB, currency) {
+
     const params = {
         vs_currency: currency,
         ids: coinA + "," + coinB,
@@ -70,17 +85,45 @@ function getCoins(coinA, coinB, currency) {
     const queryString = formatQueryParams(params)
     const url = searchURL + '?' + queryString;
 
-
-
     fetch(url)
-        .then(response => response.json())
-        .then(responseJson => {
-            if (responseJson[0].id == null) {              
-                throw console.log('incorrect coin name');
-            } else {
-                displayResults(responseJson, coinA)}
+        .then(responseCoinData => responseCoinData.json())
+        .then(responseJsonCoinData => {            
+            //check to see if the API request works, if it doesn't work, check to see if the user entered a symbol rather than the coin name
+            
+            if (responseJsonCoinData.length === 0) {
+                //fetches the coin list and compares the user input to an object of symbols in order to find the correct ID
+                fetch(coinMappingURL)
+                    .then(responseCoinList => responseCoinList.json())
+                    .then(responseJsonCoinList => {
+                        console.log(responseJsonCoinList[0].symbol);
+
+                        let coinAid = mapCoin(responseJsonCoinList, coinA)
+                        let coinBid = mapCoin(responseJsonCoinList, coinB)
+
+                        const params = {
+                            vs_currency: currency,
+                            ids: coinAid + "," + coinBid,
+                            order: "market_cap_desc",
+                            per_page: "2",
+                            page: "1",
+                            sparkline: "false"
+                        };
+                        const queryString = formatQueryParams(params)
+                        const url = searchURL + '?' + queryString;
+
+                        fetch(url)
+                            .then(responseCoinDataTwo => responseCoinDataTwo.json())
+                            .then(responseJsonCoinDataTwo => {
+                                displayResults(responseJsonCoinDataTwo, coinAid)
+                            })
+                    })
+
+            } else {
+                displayResults(responseJsonCoinData, coinA)
+            }
         })
-        .catch(error => $("h3#js-prompt").replaceWith(`<h3> that didn't work, please try again </h2>`))
+        .catch(error => $("h3#js-prompt").append(`<h5> oops, that didn't work.</h5> <br> <h3>Please enter either two coin names, OR two symbols of co-integrated pairs </h3>`))
+
 }
 
 // watches the form for an input of coins from the user

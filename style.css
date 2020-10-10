@@ -15,16 +15,25 @@ html {
 }
 
 .green {
+  width: 100%;
   margin: 100px auto 200px auto;
-  width: 80%;
   text-align: center;
 }
 
 h1.white {
-  font-family: 'Montserrat', serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   color: white;
-  font-size:20px;
+  font-size:18px;
+  line-height: 30px;
+
+}
+
+h1.white {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size:18px;
   line-height: 30px;
 
 }
@@ -76,6 +85,11 @@ h4 {
   font-size:14px;
 }
 
+h5 {
+  color:red;
+  font-size: 20px;
+}
+
 .dark {
   background-color:#232016;
   border-radius: 10px;
@@ -84,20 +98,21 @@ h4 {
 }
 
 label { 
-    width: 100px; 
+    width: 80px; 
     float: left; 
     margin: 0 20px 0 0; }
 
 span {
-    width: 115px;
+    width: 80px;
     display: block; 
     margin: 0 0 3px; 
     font-size: 1.2em; 
     font-weight: bold; 
+    text-align: center;
     }
 
 input { 
-    width: 100px; 
+    width: 80px; 
     padding: 5px;
     border-radius: 30px; 
     border: none;
@@ -134,7 +149,7 @@ button {
   }
 /* Groups & Items  (Mobile First) */
 .coin-inputs {
-    width: 360px;
+    width: 300px;
     text-align: center;
     margin: 0 auto 30px auto;
 }
@@ -145,7 +160,7 @@ button {
   
   .group {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
   
   .item {
@@ -160,68 +175,83 @@ button {
   }
 
   .group {
-    flex-direction: row;
+    flex-direction: column;
   }
 
- 
+  .coin-volume {
+    display: none;
+}
+
+.coin-volume-title {
+    display: none;
+}
+
+.coin-percent {
+  display: none;
+}
+
+.coin-percent-title {
+  display: none;
+}
+
+.coin-market-cap {
+  display: none;
+
+}
+
+.coin-market-cap-title {
+  display: none;
+}
+
   
   /* Groups & Items  (Desktop) */
   
-  @media (min-width: 0px) and (max-width: 600px) {
+
+  @media all and (min-width: 600px) {
     .group {
-      flex-direction: column;
+      flex-direction: row;
     }
-
-    .green {
-      width: 100%;
-    }
-
-    h1.white {
-      font-family: 'Montserrat', serif;
-      font-weight: bold;
-      color: white;
-      font-size:18px;
-      line-height: 30px;
-    
-    }
-  }
-
-  @media all and (max-width: 600px) {
 
     .coin-volume {
-        display: none;
+        display: block;
     }
 
     .coin-volume-title {
-        display: none;
+        display: block;
     }
     
+    .green {
+      width: 80%;
+    }
+
+    h1.white {
+      font-size:22px;
+      line-height: 30px;
+    
+    }
       
   }
 
-  @media all and (max-width: 900px) {
+  @media all and (min-width: 900px) {
       .coin-percent {
-        display: none;
-    }
+        display: block;
+      }
 
     .coin-percent-title {
-        display: none;
-    }
+        display: block;
+      }
 
     }
     
 
-  @media all and (max-width: 1200px) {
-  
-         
+  @media all and (min-width: 1200px) {         
     .coin-market-cap {
-        display: none;
-
-    }
+        display: block;
+      }
 
     .coin-market-cap-title {
-        display: none;
-    }
+        display: block;
+      }
 
     }
 
