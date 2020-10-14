@@ -1,6 +1,6 @@
 
 body {
-  font-family: 'Roboto', serif;
+  font-family: 'Roboto', sans-serif;
   background: linear-gradient(180deg, #8EA73B 25%, #33332C 50%, #33332C 75%);
   color:#CCC;
 } 
@@ -70,7 +70,7 @@ h1 {
 }
 
 h2, h4, span {
-  font-family: 'Montserrat', serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   color:#CEDD47;
 }
@@ -85,7 +85,7 @@ h4 {
   font-size:14px;
 }
 
-h5 {
+.error {
   color:red;
   font-size: 20px;
 }
@@ -102,7 +102,7 @@ label {
     float: left; 
     margin: 0 20px 0 0; }
 
-span {
+.input-title {
     width: 80px;
     display: block; 
     margin: 0 0 3px; 

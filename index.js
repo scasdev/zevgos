@@ -42,13 +42,13 @@ function displayResults(responseJson, coinAinput) {
     let spreadTwoDecimalPlaces = spread.toFixed(2);
 
     // assigns visual representation of the formula to the variable
-    let formulaVisual = `${coinA.symbol} - ${coinB.symbol} *` + `  ${ratioTwoDecimalPlaces}`;
+    let formulaVisual = `${coinA.symbol.toUpperCase()} - ${coinB.symbol.toUpperCase()} *` + `  ${ratioTwoDecimalPlaces}`;
 
 
-    $("h3#js-prompt").append(`<h3> see results below </h3>`);
-    $("h2#js-ratio").append(`<h2>${ratioTwoDecimalPlaces}</h2>`);
-    $("h2#js-formula").append(`<h2 class="coin-symbol-formula">${formulaVisual}</h2>`);
-    $("h2#js-spread").append(`<h2> ${spreadTwoDecimalPlaces} </h2>`);
+    $("h3#js-prompt").append(`see results below`);
+    $("h2#js-ratio").append(`${ratioTwoDecimalPlaces}`);
+    $("h2#js-formula").append(`${formulaVisual}`);
+    $("h2#js-spread").append(`${spreadTwoDecimalPlaces}`);
 
     //display the results section  
     $('#results').removeClass('hidden');
@@ -118,7 +118,7 @@ function getCoins(coinA, coinB, currency) {
                 displayResults(responseJsonCoinData, coinA)
             }
         })
-        .catch(error => $("h3#js-prompt").append(`<h5> oops, that didn't work.</h5> <br> <h3>Please enter two coin names, OR two symbols of co-integrated pairs </h3>`))
+        .catch(error => $("h3#js-prompt").append(`<span class="error"> oops, that didn't work.</span> <br> Please enter two coin names, OR two symbols of co-integrated pairs `))
 
 }
 
